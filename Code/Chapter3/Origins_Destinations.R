@@ -18,10 +18,11 @@ OD_SexAge_Mode$Workplace=as.character( OD_SexAge_Mode$Workplace)
 
 Destinations_msoa = UK_boundaries[UK_boundaries$AREA_ID %in% OD_SexAge_Mode$Workplace, ]
 Destinations_msoa1 = Destinations_msoa[,-4]
-cols=colnames(Destinations_msoa1)
+cols = colnames(Destinations_msoa1)
+if("geometry" %in% cols) cols = cols[-length(cols)]
 
 Destinations_regions = UK_boundaries_regions[UK_boundaries_regions$FIRST_CODE %in% OD_SexAge_Mode$Workplace, ]
-colnames(Destinations_regions)=cols
+colnames(Destinations_regions) = cols
 
 Destinations=rbind(Destinations_msoa1, Destinations_regions)
 
